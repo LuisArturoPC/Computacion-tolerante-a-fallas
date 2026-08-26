@@ -1,4 +1,5 @@
-## Ejemplo en Python de implementación de Herramientas para el Manejo de Errores
+# Computacion-tolerante-a-fallas
+# (Par. 2) Ejemplo: Otras herramientas para el manejar errores 
 
 A continuación se detalla cada técnica implementada en el código fuente junto con su fragmento correspondiente:
 
