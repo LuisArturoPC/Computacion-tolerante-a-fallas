@@ -57,6 +57,8 @@ with DAG(
    
     tarea_extraccion >> tarea_transformacion
 ```
+![Vista General del DAG](vista_General.png)
+
 ![Detalle de Tareas](detalle_tareas.png)
 
-![Vista General del DAG](vista_General.png)
+
