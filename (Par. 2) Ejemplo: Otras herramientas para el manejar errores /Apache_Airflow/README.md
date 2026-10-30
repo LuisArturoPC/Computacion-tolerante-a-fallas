@@ -17,7 +17,7 @@ from airflow import DAG
 from airflow.operators.python import PythonOperator
 from datetime import datetime, timedelta
 
-# 1. Definición de las funciones de negocio (Lógica de Python)
+
 def extraer_datos():
     print("Conectando a la base de datos y extrayendo registros...")
     return "Datos extraídos"
@@ -26,10 +26,10 @@ def transformar_datos():
     print("Limpiando valores nulos y transformando la información...")
     return "Datos listos para análisis"
 
-# 2. Configuración por defecto para las tareas del DAG
+
 argumentos_por_defecto = {
     'owner': 'ingenieria_datos',
-    'retries': 2, # Tolerancia a fallos: reintenta 2 veces si hay error
+    'retries': 2, 
     'retry_delay': timedelta(minutes=1)
 }
 
@@ -39,11 +39,11 @@ with DAG(
     default_args=argumentos_por_defecto,
     description='Un DAG simple de ETL de prueba',
     start_date=datetime(2023, 1, 1),
-    schedule_interval='@daily', # Se ejecuta una vez al día
+    schedule='@daily',
     catchup=False
 ) as dag:
 
-    # 4. Creación de las Tareas (Tasks)
+    
     tarea_extraccion = PythonOperator(
         task_id='tarea_extraer',
         python_callable=extraer_datos
@@ -54,6 +54,9 @@ with DAG(
         python_callable=transformar_datos
     )
 
-    # 5. Definición de Dependencias (Orden de ejecución)
-    # La extracción debe ocurrir antes que la transformación
+   
     tarea_extraccion >> tarea_transformacion
+```
+![Detalle de Tareas](detalle_tareas.png)
+
+![Vista General del DAG](vista_General.png)
